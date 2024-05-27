@@ -438,17 +438,138 @@ function angle()
 
 // Write a js program to input all sides of a triangle and check whether triangle is valid or not.
 
+function sides() {
+    var a = Number(document.getElementById("sides1").value);
+    var b = Number(document.getElementById("sides2").value);
+    var c = Number(document.getElementById("sides3").value);
 
-function sides() 
-{
-    var a=Number(document.getElementById("sides1").value);
-    var b=Number(document.getElementById("sides2").value);
-    var c=Number(document.getElementById("sides3").value);
-    if(a<=0||b<=0||c<=0){
-        document.getElementById("sides01").innerHTML="put the valid value"
+    if (a <= 0 || b <= 0 || c <= 0) {
+        document.getElementById("sides01").innerHTML = "Please enter valid positive values.";
+    } 
+  
+    else if (a + b > c && a + c > b && b + c > a) {
+        document.getElementById("sides01").innerHTML = "These are the sides of a triangle.";
+    } 
+    else {
+        document.getElementById("sides01").innerHTML = "These are not the sides of a triangle.";
     }
-    else if((a+b+c)==180){
+}
+
+
+//  Write a js program to check whether the triangle is equilateral, isosceles or scalene triangle-
+function triangle() {
+    var a = Number(document.getElementById("triangle1").value);
+    var b = Number(document.getElementById("triangle2").value);
+    var c = Number(document.getElementById("triangle3").value);
+    if (a<=0||b<=0||c<=0) {
+        document.getElementById("triangle01").innerHTML="put the valid value";
         
+    }
+    else if (a==c&&a==b&&b==c) {
+        document.getElementById("triangle01").innerHTML="This is an equilateral triangle.";
+        
+    }
+    else if (a==b||a==c||b==c) {
+        document.getElementById("triangle01").innerHTML="this is  anisosceles ";
+    
+        
+    }
+    else{
+        document.getElementById("triangle01").innerHTML="this is an  scalene "
+    }
+}
+//  Write a js program to find all roots of a quadratic equation
+function roots() {
+    var a=parseFloat(document.getElementById("roots1").value);
+    var b=parseFloat(document.getElementById("roots2").value);
+    var c=parseFloat(document.getElementById("roots3").value);
+    let discriminant=(b*b-4*a*c);
+    if (discriminant>0) {
+        document.getElementById("roots01").innerHTML="this is roots of real and differnet";
+
+        
+    }
+    else if(discriminant==0){
+        document.getElementById("roots01").innerHTML="this root is equal and equal";
+    }
+    else if(discriminant<0){
+        document.getElementById("roots01").innerHTML="this root is complex and different";
 
     }
+    else{
+        document.getElementById("roots01").innerHTML="put the valid value";
+    }
+}
+
+//  Write a js program to input marks of five subjects Physics, Chemistry, Biology, Mathematics and Computer. Calculate percentage and grade according to following:
+// Percentage >= 90% : Grade A
+// Percentage >= 80% : Grade B
+// Percentage >= 70% : Grade C
+// Percentage >= 60% : Grade D
+// Percentage >= 40% : Grade E
+// Percentage < 40% : Grade F 
+function marks() {
+    var phy=document.getElementById("phy").value;
+    var bio=document.getElementById("bio").value;
+    var chem=document.getElementById("chem").value;
+    var math=document.getElementById('math').value;
+    var comp=document.getElementById("comp").value;
+     var totalMarks=parseInt(phy+bio+chem+math+comp);
+     var percentage=totalMarks/500*100;
+    if (percentage >= 90 ) {
+
+        grade='A';
+        
+    }
+    if (percentage>=80) {
+        grade='B'
+    }
+
+     else if(percentage>=70) {
+        grade='C'
+    }
+    else if(percentage>=60){
+        grade='D'
+    }
+    else if(percentage>=50){
+        grade='E'
+    }
+    else{
+        grade="F"
+    }
+
+    document.getElementById("result").innerHTML = "Percentage: " + percentage.toFixed(2) + "%, Grade: " + grade;
+}
+
+
+
+// Write a js program to input electricity unit charges and calculate total electricity bill according to the given condition:
+// For first 50 units Rs. 0.50/unit
+// For next 100 units Rs. 0.75/unit
+// For next 100 units Rs. 1.20/unit
+// For unit above 250 Rs. 1.50/unit
+
+function electric() {
+    alert="ok"
+    var units = parseInt(document.getElementById("unit").value);
+    var bill = 0;
+
+    if (isNaN(units) || units < 0) {
+        document.getElementById("result").innerHTML = "Please enter a valid number of units.";
+        return;
+    }
+
+    if (units <= 50) {
+        bill += units * 0.50;
+    } else if (units <= 100) {
+        bill += 50 * 0.50 + (units - 50) * 0.75;
+    } else if (units <= 150) {
+        bill += 50 * 0.50 + 50 * 0.75 + (units - 100) * 1.20;
+    } else if (units <= 250) {
+        bill += 50 * 0.50 + 50 * 0.75 + 50 * 1.20 + (units - 150) * 1.20;
+    } else {
+        bill += 50 * 0.50 + 50 * 0.75 + 50 * 1.20 + 100 * 1.20 + (units - 250) * 1.50;
+    }
+
+    document.getElementById("result").innerHTML = "This is the bill: " + bill.toFixed(2);
 }

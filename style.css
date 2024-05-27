@@ -6,8 +6,12 @@ body{
     background-image: url(images/background.jpg);
     background-position: center;
     background-repeat: no-repeat;
+    width: 100%;
 }
 .main{
+    /* background-image: url(images/background.jpg);
+    align-items: center;
+    background-position: center; */
 
     display: flex;
     align-items: center;
